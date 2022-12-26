@@ -48,7 +48,7 @@ task:
       - cd ~/work
       - repo init --depth=1 -u $MANIFEST -b $MANIFEST_BRANCH
       - git clone $LOCAL_MANIFEST --depth 1 -b $LOCALMANIFEST_BRANCH .repo/local_manifests
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j1 --fail-fast
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
