@@ -48,7 +48,7 @@ task:
       - cd ~/work
       - repo init --depth=1 -u $MANIFEST -b $MANIFEST_BRANCH
       - git clone $LOCAL_MANIFEST --depth 1 -b $LOCALMANIFEST_BRANCH .repo/local_manifests
-      - repo sync -j1 --fail-fast --force-sync --no-tags --no-clone-bundle
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -63,7 +63,7 @@ task:
       - ccache -M 50G
       - . build/envsetup.sh
       - lunch "$LUNCH_COMBO"
-      - mka -j1 --fail-fast $TARGET
+      - mka -j31 $TARGET
      
   Upload_script:
       - echo "============================"
