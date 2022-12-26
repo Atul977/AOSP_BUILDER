@@ -2,7 +2,7 @@ env:
     MANIFEST: https://github.com/PixelOS-AOSP/manifest.git
     MANIFEST_BRANCH: twelve
     LOCAL_MANIFEST: https://github.com/Atul977/local_manifest.git
-    LOCALMANIFEST_BRANCH : test
+    LOCALMANIFEST_BRANCH : pp
     DEVICE: garden
     OEM: xiaomi
     LUNCH_COMBO: aosp_garden-userdebug
