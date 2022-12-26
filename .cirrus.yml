@@ -1,13 +1,13 @@
 env:
-    MANIFEST: https://github.com/AICP/platform_manifest.git
-    MANIFEST_BRANCH: s12.1
+    MANIFEST: https://github.com/PixelOS-AOSP/manifest.git
+    MANIFEST_BRANCH: twelve
     LOCAL_MANIFEST: https://github.com/Atul977/local_manifest.git
-    LOCALMANIFEST_BRANCH : 12
+    LOCALMANIFEST_BRANCH : test
     DEVICE: garden
     OEM: xiaomi
-    LUNCH_COMBO: aicp_garden-userdebug
+    LUNCH_COMBO: aosp_garden-userdebug
     TARGET: bacon
-    OUTPUT: Aicp*.zip
+    OUTPUT: Aosp*.zip
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -48,7 +48,7 @@ task:
       - cd ~/work
       - repo init --depth=1 -u $MANIFEST -b $MANIFEST_BRANCH
       - git clone $LOCAL_MANIFEST --depth 1 -b $LOCALMANIFEST_BRANCH .repo/local_manifests
-      - repo sync -j31 --force-sync --no-tags --no-clone-bundle
+      - repo sync -j1 --fail-fast --force-sync --no-tags --no-clone-bundle
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -63,7 +63,7 @@ task:
       - ccache -M 50G
       - . build/envsetup.sh
       - lunch "$LUNCH_COMBO"
-      - mka -j31 $TARGET
+      - mka -j1 --fail-fast $TARGET
      
   Upload_script:
       - echo "============================"
